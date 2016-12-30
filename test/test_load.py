@@ -5,12 +5,12 @@ from __future__ import absolute_import, division, print_function, with_statement
 # print(cwd)
 # print(__file__)
 
-from pselenium.driverfactory import DriverFactory
+from pselenium import driverfactory
 
 
 
-driver =  DriverFactory.create('Chrome')
+driver =  driverfactory.create('Chrome')
 driver.get('http://www.baidu.com')
 
-driver.implicitly_wait(2)
+# driver.implicitly_wait(2)
 driver.close()
