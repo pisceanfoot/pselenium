@@ -170,3 +170,4 @@ $RECYCLE.BIN/
 nohup.out
 *.sublime-*
 demo/
+_copy/
