@@ -56,6 +56,8 @@ def ide_check_visiable(step, field_name):
 @step(' checklog')
 def ide_check_log(step):
     serverlog = util.get_log(world.browser) 
+    logger.debug('browser console error log %s', serverlog)
+
     assert_true(step, not serverlog, 'has error in browser console')
 
 @step(' input "(.*?)" with "(.*?)"$')
