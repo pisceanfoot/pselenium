@@ -5,9 +5,9 @@ from .selenium import selectDriver
 
 
 
-def create(name):
-	Driver =  selectDriver('Chrome')
-	driver = Driver('/Users/leo/Documents/Workspace/dev/selenium/chromedriver')
+def create(name, *arg, **kwarg):
+	Driver =  selectDriver(name)
+	driver = Driver(*arg, **kwarg)
 
 	return driver
 
