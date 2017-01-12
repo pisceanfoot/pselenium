@@ -4,6 +4,8 @@ from __future__ import absolute_import, division, print_function, with_statement
 from nose.tools import assert_true as nose_assert_true
 from nose.tools import assert_false as nose_assert_false
 
+import logging
+logger = logging.getLogger(__name__)
 # pylint:disable=missing-docstring,redefined-outer-name,redefined-builtin
 # pylint:disable=invalid-name
 
@@ -18,7 +20,7 @@ class AssertContextManager():
         step = self.step
         if traceback:
             if isinstance(value, AssertionError):
-                error = AssertionError(self.step.sentence)
+                error = AssertionError("%s, failed because: %s" % (self.step.sentence, value.message))
             else:
                 sentence = "%s, failed because: %s" % (step.sentence, value)
                 error = AssertionError(sentence)
@@ -26,6 +28,7 @@ class AssertContextManager():
 
 
 def assert_true(step, exp, msg=None):
+
     with AssertContextManager(step):
         nose_assert_true(exp, msg)
 

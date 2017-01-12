@@ -2,6 +2,6 @@
 from __future__ import absolute_import, division, print_function, with_statement
 
 CHROME = 'Chrome'
-FIREFOX = 'FireFox'
+FIREFOX = 'Firefox'
 REMOTE = 'Remote'
 

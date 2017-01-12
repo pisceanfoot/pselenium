@@ -28,9 +28,11 @@
 # # print(driver.get_log('server'))
 # driver.close()
 
-def a(*arg, **kwarg):
-	print arg
-	print kwarg
 
-a(a=1)
+list1 = [{"message": 1}, {"message": 1}]
+str1 = ','.join(str(e['message']) for e in list1)
+print str1
+
+
+
 

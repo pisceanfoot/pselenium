@@ -9,7 +9,7 @@ from selenium.webdriver.common.keys import Keys
 from . import util
 from .assertUtil import *
 
-logger = logging.getLogger('plettuce.webdriver')
+logger = logging.getLogger(__name__)
 
 @util.wait_for
 def wait_for_elem(browser, field_name):
@@ -55,10 +55,13 @@ def ide_check_visiable(step, field_name):
 
 @step(' checklog')
 def ide_check_log(step):
+    message = None
     serverlog = util.get_log(world.browser) 
     logger.debug('browser console error log %s', serverlog)
+    if serverlog:
+        message = ','.join(str(e['message']) for e in serverlog)
 
-    assert_true(step, not serverlog, 'has error in browser console')
+    assert_true(step, not message, 'has error in browser console: %s' % message)
 
 @step(' input "(.*?)" with "(.*?)"$')
 def fill_in_textfield(step, field_name, value):
