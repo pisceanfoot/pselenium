@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 
 from . import util
 from .assertUtil import *
+from . import screenshot
 
 logger = logging.getLogger(__name__)
 
@@ -61,6 +62,8 @@ def ide_check_log(step):
     if serverlog:
         message = ','.join(str(e['message']) for e in serverlog)
 
+    if message:
+        screenshot.capture_screenshot(step)
     assert_true(step, not message, 'has error in browser console: %s' % message)
 
 @step(' input "(.*?)" with "(.*?)"$')
