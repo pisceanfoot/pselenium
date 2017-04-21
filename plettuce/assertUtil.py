@@ -31,7 +31,7 @@ class AssertContextManager():
                     (_encode(self.step.scenario.feature.name), _encode(self.step.scenario.name), _encode(self.step.sentence), _encode(value.message)))
             else:
                 sentence = "feature> %s, scenario> %s: %s, failed because: %s" % \
-                    (_encode(self.step.scenario.feature.name), _encode(self.step.scenario.name), _encode(self.step.sentence), _encode(value))
+                    (_encode(self.step.scenario.feature.name), _encode(self.step.scenario.name), _encode(self.step.sentence), _encode(str(value)))
                 error = AssertionError(sentence)
             raise error, None, traceback
 
