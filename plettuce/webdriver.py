@@ -59,11 +59,17 @@ def ide_check_log(step):
     message = None
     serverlog = util.get_log(world.browser) 
     logger.debug('browser console error log %s', serverlog)
-    if serverlog:
-        message = ','.join(str(e['message']) for e in serverlog)
 
-    if message:
+    if serverlog:
         screenshot.capture_screenshot(step)
+
+        message = ','.join(str(e['message']) for e in serverlog)
+        message =  (step.scenario.feature.name or '') + \
+                ' > ' + \
+                (step.scenario.name or '') + \
+                ' > ' + \
+                message
+
     assert_true(step, not message, 'has error in browser console: %s' % message)
 
 @step(' input "(.*?)" with "(.*?)"$')
