@@ -29,10 +29,30 @@
 # driver.close()
 
 
-list1 = [{"message": 1}, {"message": 1}]
-str1 = ','.join(str(e['message']) for e in list1)
-print str1
+# list1 = [{"message": 1}, {"message": 1}]
+# str1 = ','.join(str(e['message']) for e in list1)
+# print str1
 
+def _encode(content):
+	if isinstance(content, unicode):
+		return content.encode('utf-8')
+	else:
+		return content
+    # if isinstance(content, str):
+    # 	print 1
+    #     return unicode(content, 'utf-8').encode('utf-8')
+    # else:
+    # 	print 2
+    #     return content
+
+print '{0}'.format(_encode('a'))
+print '{0}'.format(_encode(u'a'))
+print '{0}'.format(_encode('1'))
+print '{0}'.format(_encode(u'1'))
+
+print '{0}'.format(_encode('a的'))
+print '{0}'.format(_encode(u'a的'))
+print '{0}'.format(_encode(12))
 
 
 
