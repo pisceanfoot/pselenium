@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 # pylint:disable=invalid-name
 
 def _encode(content):
-    if isinstance(content, str):
-        return unicode(content, 'utf-8')
+    if isinstance(content, unicode):
+        return content.encode('utf-8')
     else:
         return content
 
