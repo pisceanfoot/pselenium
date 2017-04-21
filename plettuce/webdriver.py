@@ -57,8 +57,9 @@ def ide_check_visiable(step, field_name):
 @step(' checklog')
 def ide_check_log(step):
     message = None
-    serverlog = util.get_log(world.browser) 
+    serverlog = util.get_log(world.browser)
     logger.debug('browser console error log %s', serverlog)
+    
     if serverlog:
         message = ','.join(str(e['message']) for e in serverlog)
 
